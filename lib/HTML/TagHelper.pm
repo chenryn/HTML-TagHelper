@@ -25,11 +25,26 @@ our $VERSION = '0.02';
     use HTML::TagHelper;
 
     my $th = HTML::TagHelper->new();
-    print $th->image(...);
-    print $th->link_to(...);
-    my $th->text_field(...);
-    my $th->select_field(...);
-    my $th->options_for_select(...);
+    $th->t( 'bar', class => 'test', 0);
+    $th->link_to('http://example.com/', title => 'Foo', sub { 'Foo' });
+    $th->js('amcharts/ammap');
+    $th->css('amcharts/style');
+    $th->form_for('/links', sub {
+    $th->text_field(foo => 'bar')
+        . $th->input_tag(baz => 'yada', class => 'tset')
+        . $th->submit_button
+    });
+    $th->date_select_field('date', {
+        year_start => 2013,
+        year_end => 2013
+    });
+    $th->options_for_select(
+      [ {title => "Option 1", value => "option1"},
+        {title => "Option 2", value => "option2"}, ],
+      [ 'option1' ],
+    );
+    $th->textarea(e => (cols => 40, rows => 50) => sub {'text in textarea'});
+    $th->image('/uploads/001.jpg');
 
 
 =head1 DESCRIPTION
@@ -454,6 +469,8 @@ sub _escape_javascript {
 =head1 AUTHOR
 
 Gitte Wange Olrik, C<< <gitte at olrik.dk> >>
+
+Chenryn, C<< <chenlin.rao at gmail.com> >>
 
 =head1 BUGS
 

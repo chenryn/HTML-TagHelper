@@ -31,9 +31,6 @@ is $th->form_for('/links', sub {
     . $th->submit_button
 }), '<form action="/links"><input name="foo" type="text" value="bar" /><input class="tset" name="baz" type="" value="yada" /><input type="submit" value="Ok" /></form>', 'form_for with text, input and submit';
 
-# date
-is $th->date_select_field('date',{year_start => 2013, year_end => 2013}), '<select id="date_day" name="date_day"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option selected="true" value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option></select><select id="date_month" name="date_month"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option selected="true" value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option></select><select id="date_year" name="date_year"><option selected="true" value="2013">2013</option></select>', 'date_select_field';
-
 # select
 my $exp_opt_sel =<<EOF;
 <option value="option1">Option 1</option>
