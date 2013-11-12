@@ -18,7 +18,7 @@
 #     META_MERGE => { resources=>{ repository=>q[https://github.com/chenryn/HTML-TagHelper.git] }, no_index=>{ directory=>[q[t]] } }
 #     NAME => q[HTML::TagHelper]
 #     PL_FILES => {  }
-#     PREREQ_PM => { HTML::Entities=>q[0], HTML::Element=>q[0], DateTime=>q[0], Moo=>q[0], Carp=>q[0], Test::More=>q[0] }
+#     PREREQ_PM => { HTML::Element=>q[0], DateTime=>q[0], Moo=>q[0], Test::More=>q[0], Carp=>q[0], HTML::Entities=>q[0] }
 #     TEST_REQUIRES => {  }
 #     VERSION_FROM => q[lib/HTML/TagHelper.pm]
 #     clean => { FILES=>q[HTML-TagHelper-*] }
@@ -440,22 +440,22 @@ clean_subdirs :
 
 clean :: clean_subdirs
 	- $(RM_F) \
-	  core.[0-9][0-9][0-9] $(MAKE_APERL_FILE) \
-	  $(INST_ARCHAUTODIR)/extralibs.ld pm_to_blib.ts \
-	  tmon.out MYMETA.yml \
-	  perlmain.c lib$(BASEEXT).def \
-	  MYMETA.json *$(OBJ_EXT) \
-	  core.[0-9][0-9] *perl.core \
-	  perl$(EXE_EXT) perl \
-	  perl.exe so_locations \
-	  core core.[0-9][0-9][0-9][0-9] \
-	  core.[0-9] $(BASEEXT).bso \
-	  $(BASEEXT).def $(BASEEXT).exp \
-	  $(INST_ARCHAUTODIR)/extralibs.all blibdirs.ts \
-	  *$(LIB_EXT) mon.out \
-	  $(BOOTSTRAP) core.[0-9][0-9][0-9][0-9][0-9] \
-	  core.*perl.*.? pm_to_blib \
-	  $(BASEEXT).x 
+	  *$(OBJ_EXT) perl \
+	  blibdirs.ts $(BASEEXT).def \
+	  perlmain.c core.[0-9][0-9][0-9][0-9][0-9] \
+	  core.*perl.*.? MYMETA.yml \
+	  $(MAKE_APERL_FILE) *perl.core \
+	  core so_locations \
+	  core.[0-9][0-9] $(BASEEXT).bso \
+	  $(BASEEXT).x core.[0-9][0-9][0-9] \
+	  core.[0-9] $(INST_ARCHAUTODIR)/extralibs.ld \
+	  pm_to_blib.ts pm_to_blib \
+	  core.[0-9][0-9][0-9][0-9] lib$(BASEEXT).def \
+	  $(INST_ARCHAUTODIR)/extralibs.all perl$(EXE_EXT) \
+	  tmon.out perl.exe \
+	  $(BOOTSTRAP) MYMETA.json \
+	  $(BASEEXT).exp *$(LIB_EXT) \
+	  mon.out 
 	- $(RM_RF) \
 	  blib HTML-TagHelper-* 
 	- $(NOECHO) $(RM_F) $(MAKEFILE_OLD)
@@ -471,7 +471,7 @@ realclean_subdirs :
 # Delete temporary files (via clean) and also delete dist files
 realclean purge ::  clean realclean_subdirs
 	- $(RM_F) \
-	  $(MAKEFILE_OLD) $(FIRST_MAKEFILE) 
+	  $(FIRST_MAKEFILE) $(MAKEFILE_OLD) 
 	- $(RM_RF) \
 	  $(DISTVNAME) 
 
@@ -488,7 +488,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) 'configure_requires:' >> META_new.yml
 	$(NOECHO) $(ECHO) '  ExtUtils::MakeMaker: 0' >> META_new.yml
 	$(NOECHO) $(ECHO) 'dynamic_config: 1' >> META_new.yml
-	$(NOECHO) $(ECHO) 'generated_by: '\''ExtUtils::MakeMaker version 6.72, CPAN::Meta::Converter version 2.120921'\''' >> META_new.yml
+	$(NOECHO) $(ECHO) 'generated_by: '\''ExtUtils::MakeMaker version 6.72, CPAN::Meta::Converter version 2.132830'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'license: unknown' >> META_new.yml
 	$(NOECHO) $(ECHO) 'meta-spec:' >> META_new.yml
 	$(NOECHO) $(ECHO) '  url: http://module-build.sourceforge.net/META-spec-v1.4.html' >> META_new.yml
@@ -517,7 +517,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) '      "Chenryn<rao.chenlin@gmail.com>"' >> META_new.json
 	$(NOECHO) $(ECHO) '   ],' >> META_new.json
 	$(NOECHO) $(ECHO) '   "dynamic_config" : 1,' >> META_new.json
-	$(NOECHO) $(ECHO) '   "generated_by" : "ExtUtils::MakeMaker version 6.72, CPAN::Meta::Converter version 2.120921",' >> META_new.json
+	$(NOECHO) $(ECHO) '   "generated_by" : "ExtUtils::MakeMaker version 6.72, CPAN::Meta::Converter version 2.132830",' >> META_new.json
 	$(NOECHO) $(ECHO) '   "license" : [' >> META_new.json
 	$(NOECHO) $(ECHO) '      "unknown"' >> META_new.json
 	$(NOECHO) $(ECHO) '   ],' >> META_new.json

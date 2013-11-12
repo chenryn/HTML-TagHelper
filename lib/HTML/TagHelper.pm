@@ -6,7 +6,6 @@ use Moo;
 use HTML::Entities;
 use HTML::Element;
 use DateTime;
-use Carp;
 
 =head1 NAME
 
@@ -277,7 +276,7 @@ Besides this html_option, you can enter any option you want as an attribute on t
 
 sub select_field {
     my ( $self, $name, $options, $html_options ) = @_;
-    croak("You need to specify a name for the selector") unless $name;
+    return("You need to specify a name for the selector") unless $name;
 
     if ( defined($options) && ref $options eq 'ARRAY' ) {
         my $value = delete $html_options->{value};
@@ -366,7 +365,7 @@ Besides this html_option, you can enter any option you want as an attribute on t
 
 sub date_select_field {
     my ( $self, $name, $options ) = @_;
-    croak("You need to specify a name for the selector") unless $name;
+    return("You need to specify a name for the selector") unless $name;
 
     $options ||= {};
     my %html_options = (
@@ -455,7 +454,7 @@ sub _convert_options_to_javascript {
 
     $html_options->{onclick} =
       ( $popup && $method )
-      ? croak("You can't use :popup and :method in the same link\n")
+      ? return("You can't use :popup and :method in the same link\n")
       : ( $confirm && $popup ) ? "if ("
       . $self->_confirm_javascript_function($confirm) . ") { "
       . $self->_popup_javascript_function($popup)
